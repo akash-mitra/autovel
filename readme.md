@@ -47,17 +47,17 @@ Autovel gets all the information from `autovel.json` config file. An example con
 ### Options
 
 
-Property | Options | Descriptions
----      | --- | ---
-`resources` | - | An array of other `resource` objects.
-`resource` | - | Name of the resource - this name in plural form will be used to name the database table.
-`overwrite` | - | Whether or not to overwite existing codes (model, migrations, controllers etc.) pertaining to this resource while re-executing autovel.
-`columns` | - | Columns or properties needed for this resource.
-        | `name` | Name of the column / property
-        | `datatype` | Datatype of the column (should be similar to Laravel supported datatypes)
-        | [`size`] | This is an OPTIONAL property. Size of the datatype. If not provided, uses sensible defaults.
-        | [`optional`] | This is an OPTIONAL property. Depicts whether the value in the column is mandatory or optional.
-`migrate` | - | Whether or not to actually run the migrations.
+Property     | Options      | Descriptions
+---          | ---          | ---
+|`resources` | -            | An array of other `resource` objects.
+|`resource`  | -            | Name of the resource - this name in plural form will be used to name the database table.
+|`overwrite` | -            | Whether or not to overwite existing codes (model, migrations, controllers etc.) pertaining to this resource while re-executing autovel.
+|`columns`   | -            | Columns or properties needed for this resource.
+|            | `name`       | Name of the column / property
+|            | `datatype`   | Datatype of the column (should be similar to Laravel supported datatypes)
+|            | [`size`]     | This is an OPTIONAL property. Size of the datatype. If not provided, uses sensible defaults.
+|            | [`optional`] | This is an OPTIONAL property. Depicts whether the value in the column is mandatory or optional.
+|`migrate`   | -            | Whether or not to actually run the migrations.
 
 
 # Features
