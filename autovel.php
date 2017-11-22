@@ -19,6 +19,7 @@ $params = json_decode($configFile->get(), false);
 $resources = $params->resources;
 echo "Total Resources = " . count($resources) . "\n";
 foreach ($resources as $r) {
+
 	$m 	 = $r->resource;
 	$columns = $r->columns; // array
 	echo "Processing Resource [" . $m . "]...\n";
@@ -74,11 +75,17 @@ foreach ($resources as $r) {
 
 } // foreach
 
+
+// run the migrations
 if ($params->migrate === true) 
 {
 	echo "Running New Migrations.\n";
 	echo artisan('migrate:fresh');
 }
+
+// copy the JavaScript SPA library
+shell_exec ("cp $rootpath/autovel/spa.js $rootpath/public/js/");
+
 
 function root ()
 {
