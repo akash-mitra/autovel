@@ -1,0 +1,26 @@
+{
+  "resources": [
+    {
+      "resource": "department",
+      "overwrite": true,
+      "columns": [
+        {"name": "id", "datatype": "increments"},
+        {"name": "name", "datatype": "string", "size": 30},
+        {"name": "desc", "datatype": "string", "size": 255, "optional": true},
+        {"name": "col1", "datatype": "double", "optional": true},
+        {"name": "col2", "datatype": "string", "optional": false}
+      ]
+    },
+    {
+      "resource": "employee",
+      "overwrite": true,
+      "columns": [
+        {"name": "id", "datatype": "increments"},
+        {"name": "name", "datatype": "string", "size": 30},
+        {"name": "dob", "datatype": "date", "optional": true},
+        {"name": "salary", "datatype": "double"}
+      ]
+    }
+  ],
+  "migrate": false
+}
