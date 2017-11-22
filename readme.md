@@ -46,8 +46,9 @@ Autovel gets all the information from `autovel.json` config file. An example con
 
 ### Options
 
+
 Property | Options | Descriptions
-------------------------------------
+---      | --- | ---
 `resources` | - | An array of other `resource` objects.
 `resource` | - | Name of the resource - this name in plural form will be used to name the database table.
 `overwrite` | - | Whether or not to overwite existing codes (model, migrations, controllers etc.) pertaining to this resource while re-executing autovel.
