@@ -1,0 +1,20 @@
+{
+    "name": "aksmtr/autovel",
+    "description": "Automatic Code Generator for Laravel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "Akash Mitra",
+            "email": "akashmitra@gmail.com"
+        }
+    ],
+    "minimum-stability": "dev",
+    "require": {
+        "php": ">=5.6.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "Autovel\\": "src/"
+        }
+    }
+}

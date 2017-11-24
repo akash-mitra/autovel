@@ -2,25 +2,27 @@
   "resources": [
     {
       "resource": "department",
-      "overwrite": true,
+      "table": "departments",
       "columns": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "desc", "datatype": "string", "size": 255, "optional": true},
-        {"name": "col1", "datatype": "double", "optional": true},
-        {"name": "col2", "datatype": "string", "optional": false}
-      ]
+        {"name": "dep_no", "datatype": "double", "optional": true},
+        {"name": "address", "datatype": "string", "optional": false}
+      ],
+      "overwrite": true
     },
     {
       "resource": "employee",
-      "overwrite": true,
+      "table": "employees",
       "columns": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "dob", "datatype": "date", "optional": true},
         {"name": "salary", "datatype": "double"}
-      ]
+      ],
+      "overwrite": true
     }
   ],
-  "migrate": false
+  "migrate": true
 }
