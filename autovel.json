@@ -3,19 +3,20 @@
     {
       "resource": "department",
       "table": "departments",
-      "columns": [
+      "attributes": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "desc", "datatype": "string", "size": 255, "optional": true},
         {"name": "dep_no", "datatype": "double", "optional": true},
         {"name": "address", "datatype": "string", "optional": false}
       ],
+      "operations": ["index", "create", "store", "show"],
       "overwrite": true
     },
     {
       "resource": "employee",
       "table": "employees",
-      "columns": [
+      "attributes": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "dob", "datatype": "date", "optional": true},

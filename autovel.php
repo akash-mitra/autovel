@@ -25,7 +25,7 @@ echo "Total Resources = " . count($resources) . "\n";
 foreach ($resources as $r) 								     // process the resources one by one
 {                                 
 	$modelName = $r->resource;                               // resource name is the model name
-	$columns = $r->attributes;                               // attributes are the columns of the table
+	$columns   = $r->attributes;                             // attributes are the columns of the table
 	$tableName = $r->table;
 
 	echo "Processing Resource [" . $modelName . "]...\n";
@@ -33,7 +33,7 @@ foreach ($resources as $r) 								     // process the resources one by one
 	// Model - build the model and the migration
 	echo "\t--> Creating model and migrations.\n";
 	$model = new ModelBuilder($laravelRootPath, $modelName, $tableName, $r->overwrite);
-	$model->addAttributes($r->columns)
+	$model->addAttributes($columns)
 		->addMigration()
 		->migrate($params->migrate);
 
@@ -54,7 +54,7 @@ echo "All resources are processed.";
 
 function _getLaravelRootDirectory($params)
 {
-	if (property_exists("root", $params)) 
+	if (property_exists($params, "root")) 
 	{
 		return $params->root;
 	}
