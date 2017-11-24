@@ -39,7 +39,7 @@ class ViewBuilder extends LaravelObjectBuilder
      * Injects a SPA view for the model. Also adds the 
      * required JavaScript file in the public directory (default).
      */
-    public function createSPAView ($publicJSDir = null)
+    public function createSPAView ($operations, $publicJSDir = null)
     {
         if (empty($publicJSDir)) 
         {
@@ -52,10 +52,18 @@ class ViewBuilder extends LaravelObjectBuilder
         // make in-place modifications in the file
         $this->viewFileName = $this->getModelViewDirPath() . "/index.blade.php";
         $viewFile = new FileEditor($this->viewFileName);
+        
+        // page title
         $line1 = $viewFile->find('<PLACE_HOLDER_1>');
+        $viewFile->replace($line1, ucfirst($this->modelName));
+
+        // spa resource name
         $line2 = $viewFile->find('<PLACE_HOLDER_2>');
-        $viewFile->replace($line1, $this->modelName);
         $viewFile->replace($line2, '"' . $this->pluralName . '",');
+
+        // enable disable operations
+        $line3 = $viewFile->find('<PLACE_HOLDER_3>');
+        $viewFile->replace($line3, $this->getOperationsString($operations));
 
         return $this;
     }
@@ -88,6 +96,34 @@ class ViewBuilder extends LaravelObjectBuilder
     private function cleanUp ()
     {
         $this->output[] = shell_exec('rm -rf ' . $this->getModelViewDirPath());
+    }
+
+
+
+    /**
+     * Returns a SPA compatible string for the supported operations
+     */
+    private function getOperationsString($operations)
+    {
+        $opsString = "";
+
+        if (! in_array('show', $operations)) {
+            $opsString .= "\t\t" .  '"enableShow": false,' . \PHP_EOL;
+        }
+
+        if (!in_array('edit', $operations)) {
+            $opsString .= "\t\t" . '"enableEdit": false,' . \PHP_EOL;
+        }
+
+        if (!in_array('destroy', $operations)) {
+            $opsString .= "\t\t" . '"enableDelete": false,' . \PHP_EOL;
+        }
+
+        if (!in_array('create', $operations)) {
+            $opsString .= "\t\t" . '"enableCreate": false,' . \PHP_EOL;
+        }
+
+        return $opsString;
     }
 
 }

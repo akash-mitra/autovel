@@ -54,7 +54,8 @@
             $("#index-table").spartacus(
                 "<PLACE_HOLDER_2>", 
                 {
-                    "exclusions": [ 'created_at', 'updated_at', "id"]
+                    "exclusions": [ 'created_at', 'updated_at', "id"],
+                    "<PLACE_HOLDER_3>"
                 }
             );
         });

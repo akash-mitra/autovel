@@ -27,6 +27,7 @@ foreach ($resources as $r) 								     // process the resources one by one
 	$modelName = $r->resource;                               // resource name is the model name
 	$columns   = $r->attributes;                             // attributes are the columns of the table
 	$tableName = $r->table;
+	$operations = (property_exists($r, "operations") ? $r->operations : ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
 
 	echo "Processing Resource [" . $modelName . "]...\n";
 
@@ -38,15 +39,14 @@ foreach ($resources as $r) 								     // process the resources one by one
 		->migrate($params->migrate);
 
 	// Controller - add controller and router entries
-	echo "\t--> Creating controller and router entries.\n";
-	$operations = (property_exists($r, "operations") ? $r->operations : ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']);
+	echo "\t--> Creating controller and router entries for " . implode(", ", $operations) . "\n";
 	$controller = new ControllerBuilder($laravelRootPath, $modelName, $tableName, $r->overwrite);
 	$controller->addOperations($operations)->addRoutes();
 
 	// Views - adding required views
 	echo "\t--> Adding Resource Views.\n";
 	$view = new ViewBuilder($laravelRootPath, $modelName, $tableName, $r->overwrite);
-	$view->createSPAView();
+	$view->createSPAView($operations);
 
 } // foreach
 
