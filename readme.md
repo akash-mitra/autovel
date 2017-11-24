@@ -19,24 +19,26 @@ Autovel gets all the information from `autovel.json` config file. An example con
   "resources": [
     {
       "resource": "department",
-      "overwrite": true,
+      "table": "departments",
       "columns": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "desc", "datatype": "string", "size": 255, "optional": true},
         {"name": "col1", "datatype": "double", "optional": true},
         {"name": "col2", "datatype": "string", "optional": false}
-      ]
+      ],
+      "overwrite": true
     },
     {
       "resource": "employee",
-      "overwrite": true,
+      "table": "employees",
       "columns": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "dob", "datatype": "date", "optional": true},
         {"name": "salary", "datatype": "double"}
-      ]
+      ],
+      "overwrite": true
     }
   ],
   "migrate": false
@@ -51,6 +53,7 @@ Property     | Options      | Descriptions
 ---          | ---          | ---
 |`resources` | -            | An array of other `resource` objects.
 |`resource`  | -            | Name of the resource - this name in plural form will be used to name the database table.
+|`table`     | -            | Name of the database table to be created for this resource. This is generally the plural form of resource name.
 |`overwrite` | -            | Whether or not to overwite existing codes (model, migrations, controllers etc.) pertaining to this resource while re-executing autovel.
 |`columns`   | -            | Columns or properties needed for this resource.
 |            | `name`       | Name of the column / property
