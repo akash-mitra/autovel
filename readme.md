@@ -1,13 +1,16 @@
 # Automatic Code Generator for Laravel
 
-Stop creating those same Models, Create Update Delete Views, Controllers, migrations manually. Just tell autovel the table structures and let it create all of them in a second for you. Then you can of course customize if you need.
+Stop creating the same Models, Create/Update/Delete Views, Controllers and migrations manually. Just tell *Autovel* about your deata structures and let it automatically create all of those for you.
+
+In a few seconds, you get automatically created model, view, controller for each resource with fully working New, Edit, Delete functionalities in the frontend.
 
 # Setup
 
-1. Create a new directory under the laravel working directory.
-2. Download all the files in the new directory
-3. Modify the `autovel.json` as per your need
+1. Install Laravel and create scaffolding (`php artisan make:auth`)
+2. Within the Laravel Install Directory, Download *Autovel* from https://github.com/akash-mitra/autovel.git
+3. Modify the `autovel.json` as per your project datastructure (see below for options)
 4. Run autovel.php
+5. Fullstack automation complete with both backend and frontend work.
 
 ## Example `autovel.json` Config File
 
@@ -72,5 +75,3 @@ Property     | Options      | Descriptions
 1. Automatically Creates Model, Controller, Controller Methods, Views to support CRUD operations, migration files etc.
 2. Automatically design all the Create, Update form controls
 3. Optionally executes migrations 
-
-# Example 
