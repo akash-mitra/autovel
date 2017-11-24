@@ -20,19 +20,20 @@ Autovel gets all the information from `autovel.json` config file. An example con
     {
       "resource": "department",
       "table": "departments",
-      "columns": [
+      "attributes": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "desc", "datatype": "string", "size": 255, "optional": true},
         {"name": "col1", "datatype": "double", "optional": true},
         {"name": "col2", "datatype": "string", "optional": false}
       ],
+      "opeartions": ['index', 'create'],
       "overwrite": true
     },
     {
       "resource": "employee",
       "table": "employees",
-      "columns": [
+      "attributes": [
         {"name": "id", "datatype": "increments"},
         {"name": "name", "datatype": "string", "size": 30},
         {"name": "dob", "datatype": "date", "optional": true},
@@ -41,7 +42,8 @@ Autovel gets all the information from `autovel.json` config file. An example con
       "overwrite": true
     }
   ],
-  "migrate": false
+  "migrate": false,
+  "root": "/Users/mitra/Laravel/myBlog"
 }
 
 ````
@@ -60,7 +62,9 @@ Property     | Options      | Descriptions
 |            | `datatype`   | Datatype of the column (should be similar to Laravel supported datatypes)
 |            | [`size`]     | This is an OPTIONAL property. Size of the datatype. If not provided, uses sensible defaults.
 |            | [`optional`] | This is an OPTIONAL property. Depicts whether the value in the column is mandatory or optional.
+|[`operations`]| -          | OPTIONAL. An array of supported operations, e.g. ['index', 'create', 'store', 'show', 'edit', 'update', 'destroy']
 |`migrate`   | -            | Whether or not to actually run the migrations.
+|[`root`]    | -            | OPTIONAL. Laravel Installation directory. If it is left blank, the parent directory of the current directory where `autovel.php` is located, is considered as the Laravel installation directory.
 
 
 # Features
